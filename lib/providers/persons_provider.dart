@@ -45,8 +45,15 @@ class Persons with ChangeNotifier {
     ),
   ];
 
-  List<Person> get person {
+  List<Person> get persons {
     return [..._persons];
+  }
+
+  Person getSinglePerson(String phoneNumber) {
+    final Person selectedPerson =
+        _persons.where((person) => person.phoneNumber == phoneNumber) as Person;
+
+    return selectedPerson;
   }
 
   void addPerson() {

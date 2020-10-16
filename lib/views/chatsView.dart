@@ -10,8 +10,21 @@ class ChatsView extends StatelessWidget {
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       itemCount: 15,
-      itemBuilder: (ctx, i) => ListTile(
-        title: Text('data'),
+      shrinkWrap: true,
+      padding: EdgeInsets.symmetric(vertical: 10),
+      itemBuilder: (ctx, i) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListTile(
+          // dense: false,
+          leading: CircleAvatar(
+              radius: 30, backgroundImage: AssetImage('assets/images/him.jpg')
+              // Image.asset(
+              //   'assets/images/him.jpg',
+              //   fit: BoxFit.cover,
+              // ),
+              ),
+          title: Text('The message goes heren rgiuthgiehrihftie4hr'),
+        ),
       ),
     );
   }
