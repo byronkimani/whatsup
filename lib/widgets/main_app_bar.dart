@@ -45,9 +45,49 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
       bottom: TabBar(
         indicatorColor: Colors.white,
         tabs: <Widget>[
-          Tab(text: 'CHATS'),
+          Tab(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('CHATS'),
+                SizedBox(width: 8),
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 10,
+                  child: Text(
+                    '10',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Tab(text: 'STATUS'),
-          Tab(text: 'CALLS'),
+          Tab(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('CALLS'),
+                SizedBox(width: 8),
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 10,
+                  child: Text(
+                    '1',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
