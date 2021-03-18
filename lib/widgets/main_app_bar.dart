@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:whatsup/widgets/calls_tab.dart';
+import 'package:whatsup/widgets/chats_tab.dart';
+import 'package:whatsup/widgets/menu_button.dart';
+import 'package:whatsup/widgets/search_button.dart';
+import 'package:whatsup/widgets/status_tab.dart';
 
 enum Settings { newGroup, newBroadcast, whatsAppWeb, starredMessages, settings }
 
@@ -24,70 +29,18 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
       title: Text('WhatsApp'),
       actions: [
         Row(
-          children: [
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            ),
-            PopupMenuButton<Settings>(
-              itemBuilder: (BuildContext context) => menuItems.entries
-                  .map(
-                    (entry) => PopupMenuItem(
-                      child: Text(entry.key),
-                      value: entry.value,
-                    ),
-                  )
-                  .toList(),
-            )
+          children: <Widget>[
+            SearchButton(),
+            MenuButton(menuItems: menuItems),
           ],
         ),
       ],
       bottom: TabBar(
         indicatorColor: Colors.white,
         tabs: <Widget>[
-          Tab(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('CHATS'),
-                SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 10,
-                  child: Text(
-                    '10',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Tab(text: 'STATUS'),
-          Tab(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('CALLS'),
-                SizedBox(width: 8),
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 10,
-                  child: Text(
-                    '1',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          ChatsTab(numberOfUnreadMsgs: '10'),
+          StatusTab(isAnyStatusUnRead: true),
+          CallsTab(numberOfMissedCalls: 0),
         ],
       ),
     );
